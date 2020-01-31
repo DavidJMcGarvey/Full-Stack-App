@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Cookies from 'js-cookie';
+// import Cookies from 'js-cookie';
 import axios from 'axios';
 
 const Context = React.createContext();
@@ -10,9 +10,6 @@ export class Provider extends Component {
   //   authenticatedUser: Cookies.getJSON('authenticaedUser') || null
   // }
 
-  constructor() {
-    super(); 
-  }
 
   componentDidMount() {
     axios.get('http://localhost:5000/api/courses')
@@ -28,7 +25,7 @@ export class Provider extends Component {
   render() {
     // const authenticaedUser = this.state;
     const value = {
-      courses
+      courses: this.state.courses
     };
 
     return (

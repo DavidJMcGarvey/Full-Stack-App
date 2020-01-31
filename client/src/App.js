@@ -1,16 +1,29 @@
-import React, { Component } from 'react';
-import './styles/global.css';
-import axios from 'axios';
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  // Switch
+} from 'react-router-dom';
+// import './styles/global.css';
+// import axios from 'axios';
 
+import Courses from './components/Courses';
 import withContext from './Context';
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state= {
-      courses: []
-    }
-  }
+const CoursesWithContext = withContext(Courses);
+
+export default () => (
+  <Router>
+    <Route path='/' component={CoursesWithContext} />
+  </Router>
+);
+// class App extends Component {
+  // constructor() {
+  //   super();
+  //   this.state= {
+  //     courses: []
+  //   }
+  // }
 
   // componentDidMount() {
   //   axios.get('http://localhost:5000/api/courses')
@@ -24,22 +37,13 @@ class App extends Component {
   // }
 
 
-  render() {
-    console.log(this.state.courses);
-    const courseTitles = this.state.courses.map(course => `${course.title}, `);
-    console.log(courseTitles);
-    return (
-    <div className="App">
-      <ul>
-        <li>
-          {courseTitles}
-        </li>
-      </ul>
-    </div>
-    );
-  }
+  // render() {
+  //   return (
+  //     {this.props}
+  //   );
+  // }
 
-}
+// }
 
 // function App() {
 //   return (
@@ -65,4 +69,4 @@ class App extends Component {
 //   );
 // }
 
-export default App;
+// export default App;
