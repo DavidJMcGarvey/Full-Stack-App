@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './styles/global.css';
 import axios from 'axios';
 
+import withContext from './Context';
+
 class App extends Component {
   constructor() {
     super();
@@ -10,25 +12,27 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-    axios.get('http://localhost:5000/api/courses')
-      .then(res => {
-        this.setState({
-          courses: res.data.courses
-        });
-      }).catch(err => {
-        console.log('Error fetching data from REST API', err)
-      })
-  }
+  // componentDidMount() {
+  //   axios.get('http://localhost:5000/api/courses')
+  //     .then(res => {
+  //       this.setState({
+  //         courses: res.data.courses
+  //       });
+  //     }).catch(err => {
+  //       console.log('Error fetching data from REST API', err)
+  //     })
+  // }
 
 
   render() {
     console.log(this.state.courses);
+    const courseTitles = this.state.courses.map(course => `${course.title}, `);
+    console.log(courseTitles);
     return (
     <div className="App">
       <ul>
         <li>
-          <p>Davey!</p>
+          {courseTitles}
         </li>
       </ul>
     </div>
