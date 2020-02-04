@@ -1,49 +1,54 @@
-import React from 'react';
+import React, { Component }from 'react';
 import {
   BrowserRouter as Router,
   Route,
   // Switch
 } from 'react-router-dom';
-// import './styles/global.css';
-// import axios from 'axios';
+import './styles/global.css';
+import axios from 'axios';
 
+import Header from './components/Header';
 import Courses from './components/Courses';
-import withContext from './Context';
+// import withContext from './Context';
 
-const CoursesWithContext = withContext(Courses);
+// const CoursesWithContext = withContext(Courses);
 
-export default () => (
-  <Router>
-    <Route path='/' component={CoursesWithContext} />
-  </Router>
-);
-// class App extends Component {
-  // constructor() {
-  //   super();
-  //   this.state= {
-  //     courses: []
-  //   }
-  // }
+// export default () => (
+//   <Router>
+//     <Route path='/' component={CoursesWithContext} />
+//   </Router>
+// );
 
-  // componentDidMount() {
-  //   axios.get('http://localhost:5000/api/courses')
-  //     .then(res => {
-  //       this.setState({
-  //         courses: res.data.courses
-  //       });
-  //     }).catch(err => {
-  //       console.log('Error fetching data from REST API', err)
-  //     })
-  // }
+class App extends Component {
+  constructor() {
+    super();
+    this.state= {
+      courses: []
+    }
+  }
 
+  componentDidMount() {
+    axios.get('http://localhost:5000/api/courses')
+      .then(res => {
+        this.setState({
+          courses: res.data.courses
+        });
+      }).catch(err => {
+        console.log('Error fetching data from REST API', err)
+      })
+  }
 
-  // render() {
-  //   return (
-  //     {this.props}
-  //   );
-  // }
+  render() {
+    return (
+      <div>
+        <Header />
+        {/* <Courses /> */}
+      </div>
+      
+    )
+  }
 
-// }
+}
 
 // function App() {
 //   return (
@@ -69,4 +74,4 @@ export default () => (
 //   );
 // }
 
-// export default App;
+export default App;
