@@ -2,13 +2,14 @@ import React, { Component }from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  // Switch
+  Switch
 } from 'react-router-dom';
 import './styles/global.css';
 import axios from 'axios';
 
 import Header from './components/Header';
 import Courses from './components/Courses';
+import NotFound from './components/NotFound';
 // import withContext from './Context';
 
 // const CoursesWithContext = withContext(Courses);
@@ -22,28 +23,19 @@ import Courses from './components/Courses';
 class App extends Component {
   constructor() {
     super();
-    this.state= {
-      courses: []
-    }
-  }
-
-  componentDidMount() {
-    axios.get('http://localhost:5000/api/courses')
-      .then(res => {
-        this.setState({
-          courses: res.data.courses
-        });
-      }).catch(err => {
-        console.log('Error fetching data from REST API', err)
-      })
   }
 
   render() {
     return (
-      <div>
-        <Header />
-        {/* <Courses /> */}
-      </div>
+      <Router>
+        <div>
+          <Header />
+          <Switch>
+            <Route path="/dave" component={Courses} />
+            <Route component={NotFound} />
+          </Switch>
+        </div>
+      </Router>
       
     )
   }
