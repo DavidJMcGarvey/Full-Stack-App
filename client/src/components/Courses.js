@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import CourseDetail from './CourseDetail';
 
 import Course from './Course';
 
@@ -32,11 +31,6 @@ export default class Courses extends Component {
       />
     );
     return (
-      // <div>
-      //   <ul>
-      //     {listOfCourses}
-      //   </ul>
-      // </div>
       <div className="bounds">
         <ul>
           {courses}

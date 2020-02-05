@@ -1,29 +1,27 @@
-import React, { Component }from 'react';
+import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
   Switch
 } from 'react-router-dom';
 import './styles/global.css';
-import axios from 'axios';
 
+// Import components
 import Header from './components/Header';
 import Courses from './components/Courses';
+import CreateCourse from './components/CreateCourse';
+import UpdateCourse from './components/UpdateCourse';
+import CourseDetail from './components/CourseDetail';
+import UserSignIn from './components/UserSignIn';
+import UserSignUp from './components/UserSignUp';
+import UserSignOut from './components/UserSignOut';
 import NotFound from './components/NotFound';
-// import withContext from './Context';
 
+// import context
+// import withContext from './Context';
 // const CoursesWithContext = withContext(Courses);
 
-// export default () => (
-//   <Router>
-//     <Route path='/' component={CoursesWithContext} />
-//   </Router>
-// );
-
-class App extends Component {
-  constructor() {
-    super();
-  }
+export default class App extends Component {
 
   render() {
     return (
@@ -31,39 +29,17 @@ class App extends Component {
         <div>
           <Header />
           <Switch>
-            <Route path="/dave" component={Courses} />
+            <Route exact path="/" component={Courses} />
+            <Route path="/courses/create" component={CreateCourse} />
+            <Route path="/courses/:id/update" component={UpdateCourse} />
+            <Route path="/courses/:id" component={CourseDetail} />
+            <Route path="/signin" component={UserSignIn} />
+            <Route path="/signup" component={UserSignUp} />
+            <Route path="/signout" component={UserSignOut} />
             <Route component={NotFound} />
           </Switch>
         </div>
       </Router>
-      
     )
   }
-
 }
-
-// function App() {
-//   return (
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //     <ul>
-          
-    //     </ul>
-    //   </header>
-    // </div>
-//   );
-// }
-
-export default App;
