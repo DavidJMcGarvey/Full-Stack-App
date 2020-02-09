@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 
 export default class Course extends Component {
   render() {
+    const title = this.props.title;
+    const idURL = `/courses/${this.props.id}`;
     return (
-      <div className="grid-33"><a className="course--module course--link" href="course-detail.html">
+      <div className="grid-33"><Link className="course--module course--link" to={idURL}>
         <h4 className="course--label">Course</h4>
-        <h3 className="course--title">{this.props.title}</h3>
-      </a></div>
+        <h3 className="course--title">{title}</h3>
+      </Link></div>
     )
   }
 }

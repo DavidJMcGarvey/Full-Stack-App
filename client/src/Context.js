@@ -1,31 +1,29 @@
 import React, { Component } from 'react';
-// import Cookies from 'js-cookie';
-import axios from 'axios';
+import Cookies from 'js-cookie';
+import Data from './Data';
 
 const Context = React.createContext();
 
 export class Provider extends Component {
 
-  // state = {
-  //   authenticatedUser: Cookies.getJSON('authenticaedUser') || null
-  // }
+  state = {
+    authenticatedUser: Cookies.getJSON('authenticaedUser') || null
+  }
 
-
-  componentDidMount() {
-    axios.get('http://localhost:5000/api/courses')
-      .then(res => {
-        this.setState({
-          courses: res.data.courses
-        });
-      }).catch(err => {
-        console.log('Error fetching data from REST API', err)
-      })
+  constructor() {
+    super();
+    this.data = new Data()
   }
 
   render() {
-    // const authenticaedUser = this.state;
+    const { authenticaedUser } = this.state;
     const value = {
-      courses: this.state.courses
+      authenticaedUser,
+      data: this.data,
+      actions: {
+        signin: this.signIn,
+        sighnout: this.signOut
+      }
     };
 
     return (
@@ -35,7 +33,30 @@ export class Provider extends Component {
     );
   }
 
+  signIn = async (username, password) => {
+    const user = await this.data.getUser(username, password);
+    if (user != null) {
+      this.setState(() => {
+        return {
+          authenticatedUser: user
+        };
+      });
+      Cookies.set('authenticatedUser', JSON.stringify(user), { expires: 1 });
+    }
+    return user;
+  }
+
+  signOut = () => {
+    this.setState(() => { 
+      return {
+        authenticatedUser: null 
+      };
+    });
+    Cookies.remove('authenticatedUser');
+  }
 }
+
+export const Consumer = Context.Consumer;
 
 export default function withContext(Component) {
   return function ContextComponent(props) {

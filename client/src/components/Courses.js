@@ -27,6 +27,8 @@ export default class Courses extends Component {
     let courseList = this.state.courses;
     let courses = courseList.map( course => 
       <Course 
+        id={course.id}
+        key={course.id.toString() + 1}
         title={course.title}
       />
     );
