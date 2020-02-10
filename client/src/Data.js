@@ -51,4 +51,17 @@ export default class Data {
       throw new Error();
     }
   }
+
+  // getCourse = async (id) => {
+  //   const res = await this.api(`/courses/${id}`, 'GET', null);
+  //   if (res.status === 200) {
+  //     return res.json()
+  //       .then(resData => resData);
+  //   } else if (res.status === 404) {
+  //     return null;
+  //   } else {
+  //     throw new Error();
+  //   }
+  // }
+
 }

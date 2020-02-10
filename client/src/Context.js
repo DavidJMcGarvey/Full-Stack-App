@@ -22,7 +22,8 @@ export class Provider extends Component {
       data: this.data,
       actions: {
         signin: this.signIn,
-        sighnout: this.signOut
+        signout: this.signOut,
+        // getCourse: this.getCourse
       }
     };
 
@@ -54,9 +55,28 @@ export class Provider extends Component {
     });
     Cookies.remove('authenticatedUser');
   }
+
+  // async getCourse(id) {
+  //   const res = await this.api(`/courses/${id}`, 'GET', null);
+  //   if (res.status === 200) {
+  //     return res.json()
+  //       .then(resData => resData);
+  //   } else if (res.status === 404) {
+  //     return null;
+  //   } else {
+  //     throw new Error();
+  //   }
+  // }
+
 }
 
 export const Consumer = Context.Consumer;
+
+/**
+ * A higher-order component that wraps the provided component in a Context Consumer component.
+ * @param {class} Component - A React component.
+ * @returns {function} A higher-order component.
+ */
 
 export default function withContext(Component) {
   return function ContextComponent(props) {
