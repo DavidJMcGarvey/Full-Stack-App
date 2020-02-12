@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 // Header component
 export default class Header extends React.PureComponent {
   render() {
-    console.log(this.props);
+
     const { context } = this.props;
     const authUser = context.authenticatedUser;
     
@@ -15,7 +15,7 @@ export default class Header extends React.PureComponent {
           <nav>
             {authUser ?
               <React.Fragment>
-                <span>Welcome {authUser.name}!</span>
+                <span>Welcome {authUser.firstName}!</span>
                 <Link className="signout" to="/signout">Sign Out</Link>
               </React.Fragment>
             :
