@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class UserSignUp extends Component {
   render() {
@@ -13,11 +14,11 @@ export default class UserSignUp extends Component {
               <div><input id="password" name="password" type="password" className="" placeholder="Password" value=""/></div>
               <div><input id="confirmPassword" name="confirmPassword" type="password" className="" placeholder="Confirm Password"
                   value=""/></div>
-              <div class="grid-100 pad-bottom"><button className="button" type="submit">Sign Up</button><button class="button button-secondary" onclick="event.preventDefault(); location.href='index.html';">Cancel</button></div>
+              <div className="grid-100 pad-bottom"><button className="button" type="submit">Sign Up</button><button className="button button-secondary" onClick="event.preventDefault(); location.href='index.html';">Cancel</button></div>
             </form>
           </div>
           <p>&nbsp;</p>
-          <p>Already have a user account? <a href="sign-in.html">Click here</a> to sign in!</p>
+          <p>Already have a user account? <Link to={`/signin`}>Click here</Link> to sign in!</p>
         </div>
         
     )

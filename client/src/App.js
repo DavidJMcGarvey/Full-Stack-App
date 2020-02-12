@@ -4,7 +4,7 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
-import './styles/global.css';
+
 
 // Import components
 import Header from './components/Header';
@@ -17,7 +17,7 @@ import UserSignUp from './components/UserSignUp';
 import UserSignOut from './components/UserSignOut';
 import NotFound from './components/NotFound';
 import withContext from './Context';
-import PrivateRoute from './PrivateRoute';
+// import PrivateRoute from './PrivateRoute';
 
 const HeaderWithContext = withContext(Header);
 const CoursesWithContext = withContext(Courses);
@@ -35,6 +35,7 @@ export default class App extends Component {
       <Router>
         <div>
           <HeaderWithContext />
+          
           <Switch>
             <Route exact path="/courses" component={CoursesWithContext} />
             <Route path="/courses/create" component={CreateCourseWithContext} />

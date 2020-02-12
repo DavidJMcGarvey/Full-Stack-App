@@ -7,23 +7,23 @@ const Context = React.createContext();
 export class Provider extends Component {
 
   state = {
-    authenticatedUser: Cookies.getJSON('authenticaedUser') || null
-  }
+    authenticatedUser: Cookies.getJSON('authenticatedUser') || null
+  };
 
   constructor() {
     super();
-    this.data = new Data()
+    this.data = new Data();
   }
 
   render() {
-    const { authenticaedUser } = this.state;
+    const { authenticatedUser } = this.state;
+
     const value = {
-      authenticaedUser,
+      authenticatedUser,
       data: this.data,
       actions: {
-        signin: this.signIn,
-        signout: this.signOut,
-        // getCourse: this.getCourse
+        signIn: this.signIn,
+        signOut: this.signOut
       }
     };
 
@@ -55,19 +55,6 @@ export class Provider extends Component {
     });
     Cookies.remove('authenticatedUser');
   }
-
-  // async getCourse(id) {
-  //   const res = await this.api(`/courses/${id}`, 'GET', null);
-  //   if (res.status === 200) {
-  //     return res.json()
-  //       .then(resData => resData);
-  //   } else if (res.status === 404) {
-  //     return null;
-  //   } else {
-  //     throw new Error();
-  //   }
-  // }
-
 }
 
 export const Consumer = Context.Consumer;
@@ -82,10 +69,8 @@ export default function withContext(Component) {
   return function ContextComponent(props) {
     return (
       <Context.Consumer>
-        {context => <Component {...props} context={context} />}
+        { context => <Component {...props} context={context} /> }
       </Context.Consumer>
     );
   }
 }
-
-

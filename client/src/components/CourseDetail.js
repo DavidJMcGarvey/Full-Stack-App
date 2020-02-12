@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 export default class CourseDetail extends Component {
@@ -27,14 +28,15 @@ export default class CourseDetail extends Component {
   render() {
     const course = this.state.course;
     const author = this.state.owner;
+    const id = this.state.course.id;
     console.log(course);
 
     return (
       <div>
         <div className="actions--bar">
         <div className="bounds">
-          <div className="grid-100"><span><a className="button" href="update-course.html">Update Course</a><a className="button" href="/">Delete Course</a></span><a
-              className="button button-secondary" href="index.html">Return to List</a></div>
+          <div className="grid-100"><span><Link className="button" to={`/courses/${id}/update`}>Update Course</Link><a className="button" href="/">Delete Course</a></span><Link
+              className="button button-secondary" to="/courses">Return to List</Link></div>
         </div>  
       </div>
       <div className="bounds course--detail">
