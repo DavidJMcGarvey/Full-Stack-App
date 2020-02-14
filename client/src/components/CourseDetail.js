@@ -29,14 +29,27 @@ export default class CourseDetail extends Component {
     const course = this.state.course;
     const author = this.state.owner;
     const id = this.state.course.id;
-    console.log(course);
-
+    const { context } = this.props;
+    const authUser = context.authenticatedUser;
+    // const delete = 
+    console.log(context);
     return (
       <div>
         <div className="actions--bar">
         <div className="bounds">
-          <div className="grid-100"><span><Link className="button" to={`/courses/${id}/update`}>Update Course</Link><a className="button" href="/">Delete Course</a></span><Link
-              className="button button-secondary" to="/courses">Return to List</Link></div>
+          <div className="grid-100">
+            { authUser.emailAddress === author.emailAddress ?
+              <React.Fragment>
+                <span><Link className="button" to={`/courses/${id}/update`}>Update Course</Link><Link className="button" to={'/courses'} onClick={this.courseDelete} >Delete Course</Link></span>
+                <Link className="button button-secondary" to="/courses">Return to List</Link>
+              </React.Fragment>
+            :
+              <React.Fragment>
+                <Link className="button button-secondary" to="/courses">Return to List</Link>
+              </React.Fragment>  
+            }
+          </div>
+            
         </div>  
       </div>
       <div className="bounds course--detail">
@@ -85,4 +98,17 @@ export default class CourseDetail extends Component {
       </div>
     )
   }
+
+  courseDelete = () => {
+    const { context } = this.props;
+    const id = this.props.match.params.id;
+    const emailAddress = context.authenticatedUser.emailAddress;
+    const password = context.authenticatedUser.password;
+    console.log(password);
+    context.data.deleteCourse(id, emailAddress, password)
+      .then( () => {
+        this.props.history.push('/courses');
+      });
+  }
+
 }
