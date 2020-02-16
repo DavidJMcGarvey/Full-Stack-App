@@ -3,8 +3,9 @@ import Form from './Form';
 
 export default class CreateCourse extends Component {
   state = {
+    userId: this.props.context.authenticatedUser.id,
     title: '',
-    courseDescription: '',
+    description: '',
     estimatedTime: '',
     materialsNeeded: '',
     errors: []
@@ -13,7 +14,7 @@ export default class CreateCourse extends Component {
   render() {
     const {
       title,
-      courseDescription,
+      description,
       estimatedTime,
       materialsNeeded,
       errors
@@ -26,7 +27,7 @@ export default class CreateCourse extends Component {
       <div className="bounds course--detail">
         <h1>Create Course</h1>
         <div>
-          <div>
+          {/* <div>
             <h2 className="validation--errors--label">Validation errors</h2>
             <div className="validation-errors">
               <ul>
@@ -34,12 +35,12 @@ export default class CreateCourse extends Component {
                 <li>Please provide a value for "Description"</li>
               </ul>
             </div>
-          </div>
+          </div> */}
           <Form
             cancel={this.cancel}
             errors={errors}
             submit={this.submit}
-            submitButtonText="Sign In"
+            submitButtonText="Create Course"
             elements={() => (
               <React.Fragment>
                 <div className="grid-66">
@@ -56,10 +57,10 @@ export default class CreateCourse extends Component {
                     </div>
                     <p>By {authUser.firstName} {authUser.lastName}</p>
                   <div><textarea 
-                    id="courseDescription" 
-                    name="courseDescription"
+                    id="description" 
+                    name="description"
                     type="textarea"
-                    value={courseDescription} 
+                    value={description} 
                     onChange={this.change} 
                     placeholder="Course Description..." /></div>
                 </div>
@@ -97,17 +98,6 @@ export default class CreateCourse extends Component {
     )
   }
 
-  // courseCreate = () => {
-  //   const { context } = this.props;
-  //   const emailAddress = context.authenticatedUser.emailAddress;
-  //   const password = context.authenticatedUser.password;
-  //   console.log(password);
-  //   context.data.createCourse(emailAddress, password)
-  //     .then( () => {
-  //       this.props.history.push('/courses');
-  //     });
-  // }
-
   change = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -121,19 +111,32 @@ export default class CreateCourse extends Component {
 
   submit = () => {
     const { context } = this.props;
-    const { from } = this.props.location.state || { from: { pathname: '/courses' } };
+    const {
+      userId,
+      title,
+      description,
+      estimatedTime,
+      materialsNeeded
+    } = this.state;
+
     const emailAddress = context.authenticatedUser.emailAddress;
     const password = context.authenticatedUser.password;
-    const course = this.state;
+    const course = {
+      userId,
+      title,
+      description,
+      estimatedTime,
+      materialsNeeded
+    };
     context.data.createCourse(course, emailAddress, password)
-      .then( user => {
-        if (user === null) {
-          this.setState(() => {
-            return { errors: [ 'Sign-In was unsuccessful' ] };
-          });
+      .then( errors => {
+        if (errors.length) {
+          this.setState({ errors });
         } else {
-          this.props.history.push(from);
-          console.log(`SUCCESS! ${emailAddress} is now signed in!`);
+          context.actions.signIn(emailAddress, password)
+            .then(() => {
+              this.props.history.push('/courses');
+            });
         }
       })
       .catch( err => {

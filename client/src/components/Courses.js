@@ -25,7 +25,6 @@ export default class Courses extends Component {
   }
 
   render() {
-    const { context } = this.props;
     let courseList = this.state.courses;
     let courses = courseList.map( course => 
       <Course 
