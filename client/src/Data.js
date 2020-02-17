@@ -67,12 +67,17 @@ export default class Data {
     }
   }
 
-  async updateCourse(id, emailAddress, password) {
-    const response = await this.api(`/courses/${id}`, 'PUT', null, true, {emailAddress, password});
-    if (response.status === 201) {
+  async updateCourse(course, emailAddress, password) {
+    const response = await this.api(`/courses/${course.id}`, 'PUT', course, true, {emailAddress, password});
+    if (response.status === 204) {
       return [];
-    } else if (response.status === 401) {
-      return null;
+    } 
+    else if (response.status === 401) {
+      return null
+      } else if (response.status === 400) {
+        return response.json().then(data => {
+          return data.message;
+      });
     } else {
       throw new Error();
     }

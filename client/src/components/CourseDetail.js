@@ -107,6 +107,7 @@ export default class CourseDetail extends Component {
     context.data.deleteCourse(id, emailAddress, password)
       .then( () => {
         this.props.history.push('/');
+        console.log(`SUCCESS! That course just exploded!`);
       });
   }
 

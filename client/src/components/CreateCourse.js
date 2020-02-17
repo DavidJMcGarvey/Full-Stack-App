@@ -138,6 +138,7 @@ export default class CreateCourse extends Component {
           context.actions.signIn(emailAddress, password)
             .then(() => {
               this.props.history.push(from);
+              console.log(`SUCCESS! Course: "${title}" now exists!`);
             });
         }
       })
