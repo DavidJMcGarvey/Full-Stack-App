@@ -69,7 +69,7 @@ export default class UserSignIn extends Component {
 
   submit = () => {
     const { context } = this.props;
-    const { from } = this.props.location.state || { from: { pathname: '/courses' } };
+    const { from } = this.props.location.state || { from: { pathname: '/' } };
     const { emailAddress, password } = this.state;
     context.actions.signIn(emailAddress, password)
       .then( user => {
@@ -89,7 +89,7 @@ export default class UserSignIn extends Component {
   }
 
   cancel = () => {
-    this.props.history.push('/courses');
+    this.props.history.push('/');
   }
 
 }

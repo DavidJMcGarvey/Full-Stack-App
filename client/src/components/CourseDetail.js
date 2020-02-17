@@ -40,12 +40,12 @@ export default class CourseDetail extends Component {
           <div className="grid-100">
             { authUser.emailAddress === author.emailAddress ?
               <React.Fragment>
-                <span><Link className="button" to={`/courses/${id}/update`}>Update Course</Link><Link className="button" to={'/courses'} onClick={this.courseDelete} >Delete Course</Link></span>
-                <Link className="button button-secondary" to="/courses">Return to List</Link>
+                <span><Link className="button" to={`/courses/${id}/update`}>Update Course</Link><Link className="button" to={'/'} onClick={this.courseDelete} >Delete Course</Link></span>
+                <Link className="button button-secondary" to="/">Return to List</Link>
               </React.Fragment>
             :
               <React.Fragment>
-                <Link className="button button-secondary" to="/courses">Return to List</Link>
+                <Link className="button button-secondary" to="/">Return to List</Link>
               </React.Fragment>  
             }
           </div>
@@ -104,10 +104,9 @@ export default class CourseDetail extends Component {
     const id = this.props.match.params.id;
     const emailAddress = context.authenticatedUser.emailAddress;
     const password = context.authenticatedUser.password;
-    console.log(password);
     context.data.deleteCourse(id, emailAddress, password)
       .then( () => {
-        this.props.history.push('/courses');
+        this.props.history.push('/');
       });
   }
 

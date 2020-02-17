@@ -8,7 +8,7 @@ export default class CreateCourse extends Component {
     description: '',
     estimatedTime: '',
     materialsNeeded: '',
-    errors: []
+    errors: [],
   }
   
   render() {
@@ -111,6 +111,7 @@ export default class CreateCourse extends Component {
 
   submit = () => {
     const { context } = this.props;
+    const { from } = this.props.location.state || { from: { pathname: '/' } };
     const {
       userId,
       title,
@@ -128,6 +129,7 @@ export default class CreateCourse extends Component {
       estimatedTime,
       materialsNeeded
     };
+
     context.data.createCourse(course, emailAddress, password)
       .then( errors => {
         if (errors.length) {
@@ -135,7 +137,7 @@ export default class CreateCourse extends Component {
         } else {
           context.actions.signIn(emailAddress, password)
             .then(() => {
-              this.props.history.push('/courses');
+              this.props.history.push(from);
             });
         }
       })
@@ -146,7 +148,7 @@ export default class CreateCourse extends Component {
   }
 
   cancel = () => {
-    this.props.history.push('/courses');
+    this.props.history.push('/');
   }
 
 }
