@@ -44,7 +44,7 @@ export default class CourseDetail extends Component {
           <div className="grid-100">
             { authUser && authUser.emailAddress === author.emailAddress ?
               <React.Fragment>
-                <span><Link className="button" to={`/courses/${id}/update`}>Update Course</Link><Link className="button" to={'/'} onClick={this.courseDelete} >Delete Course</Link></span>
+                <span><Link className="button" to={`/courses/${id}/update`}>Update Course</Link><a className="button" to="/" onClick={this.courseDelete} >Delete Course</a></span>
                 <Link className="button button-secondary" to="/">Return to List</Link>
               </React.Fragment>
             :
@@ -95,16 +95,17 @@ export default class CourseDetail extends Component {
     const id = this.props.match.params.id;
     const emailAddress = context.authenticatedUser.emailAddress;
     const password = context.authenticatedUser.password;
+    const { from } = this.props.location.state || { from: { pathname: '/' } };
+
     context.data.deleteCourse(id, emailAddress, password)
       .then( response => {
         if (response.status === 204) {
-          this.props.history.push('/');
+          this.props.history.push(from);
           console.log(`SUCCESS! That course just exploded!`);
         } else if (response.status === 403) {
           this.props.history.push('/forbidden');
           console.log(`WHOA! You are not allow to do that!`);
         }
-
       });
   }
 
