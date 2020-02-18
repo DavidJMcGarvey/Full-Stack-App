@@ -28,10 +28,11 @@ export default class UpdateCourse extends Component {
           })
           if (this.state.owner.id !== authUser.id) {
             this.props.history.push('/forbidden');
-          };
+          }
         }
       })
       .catch(err => {
+        this.props.history.push('/error')
         console.log('Error fetching data from REST API', err)
       })
   }

@@ -96,9 +96,9 @@ router.get('/courses/:id', asyncHandler( async(req, res) => {
       }
     }
     );
-  res.json({
-    course
-  });
+    res.json({
+      course
+    });
 }));
 
 // POST /api/courses/:id 201 - create a course route

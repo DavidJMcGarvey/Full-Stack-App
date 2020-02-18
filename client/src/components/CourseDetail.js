@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
 
@@ -16,17 +16,17 @@ export default class CourseDetail extends Component {
     const id = this.props.match.params.id;
     axios.get(`http://localhost:5000/api/courses/${id}`)
       .then(response => {
-        if (response.status === 200) {
+        if (response.data.course === null) {
+          this.props.history.push('/notfound');
+        } else {
           this.setState({
             course: response.data.course,
             owner: response.data.course.author
-          });
-        } else if (response.status === 404) {
-          this.props.history.pysh('/notfound');
+          })
         }
-
       })
       .catch(err => {
+        this.props.history.push('/error')
         console.log('Error fetching data from REST API', err)
       })
   }
@@ -37,8 +37,6 @@ export default class CourseDetail extends Component {
     const id = this.state.course.id;
     const { context } = this.props;
     const authUser = context.authenticatedUser;
-    // const delete = 
-    console.log(context);
     return (
       <div>
         <div className="actions--bar">

@@ -751,3 +751,33 @@ input:focus {
 .course--description textarea {
   margin-bottom: 20px;
 }
+
+/* Davey CSS */
+.home {
+  /* background: #7c689b; */
+  color: #fff;
+  font-family: "Work Sans", sans-serif;
+  font-size: 18px;
+  padding: 15px 30px;
+  border: 0;
+  margin-right: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  display: inline-block;
+  box-sizing: border-box;
+  -webkit-transition: background 0.2s;
+  -moz-transition: background 0.2s;
+  -ms-transition: background 0.2s;
+  -o-transition: background 0.2s;
+  transition: background 0.2s;
+}
+
+.home:hover {
+  background-color: white;
+  font: white;
+}
+
+.home:focus {
+  background-color: white;
+  outline: none;
+}
