@@ -14,14 +14,22 @@ export default class UpdateCourse extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.id;
+    const { context } = this.props;
+    const authUser = context.authenticatedUser;
     axios.get(`http://localhost:5000/api/courses/${id}`)
-      .then(res => {
-        this.setState({
-          title: res.data.course.title,
-          description: res.data.course.description,
-          estimatedTime: res.data.course.estimatedTime,
-          materialsNeeded: res.data.course.materialsNeeded
-        });
+      .then(response => {
+        if (response.status === 200) {
+          this.setState({
+            owner: response.data.course.author,
+            title: response.data.course.title,
+            description: response.data.course.description,
+            estimatedTime: response.data.course.estimatedTime,
+            materialsNeeded: response.data.course.materialsNeeded
+          })
+          if (this.state.owner.id !== authUser.id) {
+            this.props.history.push('/forbidden');
+          };
+        }
       })
       .catch(err => {
         console.log('Error fetching data from REST API', err)

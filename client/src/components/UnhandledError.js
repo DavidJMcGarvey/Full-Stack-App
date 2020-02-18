@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Error extends Component {
+export default class UnhandledError extends Component {
   render() {
     return (
       <div className="bounds">

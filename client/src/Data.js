@@ -73,7 +73,7 @@ export default class Data {
       return [];
     } 
     else if (response.status === 401) {
-      return null
+      return response;
       } else if (response.status === 400) {
         return response.json().then(data => {
           return data.message;
@@ -89,6 +89,8 @@ export default class Data {
       return [];
     } else if (response.status === 401) {
       return null;
+    } else if (response.status === 403) {
+      return response;
     } else {
       throw new Error();
     }
