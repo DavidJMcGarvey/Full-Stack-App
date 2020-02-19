@@ -74,8 +74,8 @@ export default class UpdateCourse extends Component {
                     </div>
                     <p>By {authUser.firstName} {authUser.lastName}</p>
                   <div><textarea 
-                    id="courseDescription" 
-                    name="courseDescription"
+                    id="description" 
+                    name="description"
                     type="textarea"
                     value={description} 
                     onChange={this.change} 

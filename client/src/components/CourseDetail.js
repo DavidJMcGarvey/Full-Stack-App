@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown  from 'react-markdown';
 
 export default class CourseDetail extends Component {
   constructor() {
     super()
     this.state = {
       course: [],
-      owner: []
+      owner: [],
+      materials: []
     }
   }
 
@@ -21,7 +22,8 @@ export default class CourseDetail extends Component {
         } else {
           this.setState({
             course: response.data.course,
-            owner: response.data.course.author
+            owner: response.data.course.author,
+            materials: response.data.course.materialsNeeded.split(" ")
           })
         }
       })
@@ -37,6 +39,11 @@ export default class CourseDetail extends Component {
     const id = this.state.course.id;
     const { context } = this.props;
     const authUser = context.authenticatedUser;
+    
+    // Slack friend! This is where I'm attempting to add <li> markup to each material needed (line 90 for rendering)
+    const materials = this.state.materials.map(material => "+ " + material);
+    console.log(materials);
+
     return (
       <div>
         <div className="actions--bar">
@@ -44,7 +51,7 @@ export default class CourseDetail extends Component {
           <div className="grid-100">
             { authUser && authUser.emailAddress === author.emailAddress ?
               <React.Fragment>
-                <span><Link className="button" to={`/courses/${id}/update`}>Update Course</Link><a className="button" to="/" onClick={this.courseDelete} >Delete Course</a></span>
+                <span><Link className="button" to={`/courses/${id}/update`}>Update Course</Link><a className="button" href="/" onClick={this.courseDelete} >Delete Course</a></span>
                 <Link className="button button-secondary" to="/">Return to List</Link>
               </React.Fragment>
             :
@@ -78,9 +85,12 @@ export default class CourseDetail extends Component {
                 </li>
                 <li className="course--stats--list--item">
                   <h4>Materials Needed</h4>
-                  <ReactMarkdown 
-                    source={course.materialsNeeded}
-                  />
+                  <ul>
+                    <ReactMarkdown
+                      source={materials[0]} // This just provides the first item in list, not sure how to get the whole list ??
+                    />
+                  </ul>
+
                 </li>
               </ul>
             </div>
