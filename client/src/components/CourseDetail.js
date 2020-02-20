@@ -10,7 +10,6 @@ export default class CourseDetail extends Component {
     this.state = {
       course: [],
       owner: [],
-      materials: []
     }
   }
 
@@ -24,7 +23,6 @@ export default class CourseDetail extends Component {
           this.setState({
             course: response.data.course,
             owner: response.data.course.author,
-            materials: response.data.course.materialsNeeded.split(" ")
           })
         }
       })

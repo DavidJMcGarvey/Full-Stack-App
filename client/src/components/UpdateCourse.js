@@ -19,7 +19,9 @@ export default class UpdateCourse extends Component {
     const authUser = context.authenticatedUser;
     axios.get(`http://localhost:5000/api/courses/${id}`)
       .then(response => {
-        if (response.status === 200) {
+        if (response.data.course === null) {
+          this.props.history.push('/notfound');
+        } else {
           this.setState({
             owner: response.data.course.author,
             title: response.data.course.title,
