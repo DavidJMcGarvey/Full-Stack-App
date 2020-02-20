@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+// Error page for unhandled error
 export default class UnhandledError extends Component {
   render() {
     return (

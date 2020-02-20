@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Form from './Form';
 import axios from 'axios';
 
+// Update course component
 export default class UpdateCourse extends Component {
   state = {
     id: this.props.match.params.id,
@@ -127,6 +128,7 @@ export default class UpdateCourse extends Component {
     });
   }
 
+  // Function to handle submit, calls method from context
   submit = () => {
     const { context } = this.props;
     const {

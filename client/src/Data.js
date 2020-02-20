@@ -24,6 +24,7 @@ export default class Data {
     return fetch(url, options);
   }
 
+  // Helper function that gets user from REST API
   async getUser(emailAddress, password) {
     const response = await this.api(`/users`, 'GET', null, true, { emailAddress, password });
     if (response.status === 200) {
@@ -37,6 +38,7 @@ export default class Data {
     }
   }
   
+  // Helper function that creates user and stores on REST API database
   async createUser(user) {
     const response = await this.api('/users', 'POST', user);
     if (response.status === 201) {
@@ -52,6 +54,7 @@ export default class Data {
     }
   }
 
+  // Helper function that creates course and stores on REST API database
   async createCourse(course, emailAddress, password) {
     const response = await this.api('/courses', 'POST', course, true, {emailAddress, password});
     if (response.status === 201) {
@@ -67,6 +70,7 @@ export default class Data {
     }
   }
 
+  // Helper function that updates course
   async updateCourse(course, emailAddress, password) {
     const response = await this.api(`/courses/${course.id}`, 'PUT', course, true, {emailAddress, password});
     if (response.status === 204) {
@@ -83,6 +87,7 @@ export default class Data {
     }
   }
 
+  // Helper function that deletes course from REST API database
   async deleteCourse(id, emailAddress, password) {
     const response = await this.api(`/courses/${id}`, 'DELETE', null, true, {emailAddress, password});
     if (response.status === 204) {

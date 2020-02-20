@@ -9,6 +9,7 @@ import { Provider } from './Context';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
+  // Provider gives <App /> access to context
   <Provider>
     <App />
   </Provider>,

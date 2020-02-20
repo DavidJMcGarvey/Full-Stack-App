@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Form from './Form';
 
+// Create course component 
 export default class CreateCourse extends Component {
   state = {
     userId: this.props.context.authenticatedUser.id,
@@ -101,6 +102,7 @@ export default class CreateCourse extends Component {
     });
   }
 
+  // Function to handle submit, calls method from context
   submit = () => {
     const { context } = this.props;
     const { from } = this.props.location.state || { from: { pathname: '/' } };

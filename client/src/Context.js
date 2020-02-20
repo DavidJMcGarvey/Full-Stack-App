@@ -4,9 +4,11 @@ import Data from './Data';
 
 const Context = React.createContext();
 
+// Provider class to pass context to lower components
 export class Provider extends Component {
 
   state = {
+    // Use of Cookie to persist user authentication
     authenticatedUser: Cookies.getJSON('authenticatedUser') || null
   };
 
@@ -34,6 +36,7 @@ export class Provider extends Component {
     );
   }
 
+  // Sign in user from REST API database
   signIn = async (emailAddress, password) => {
     const user = await this.data.getUser(emailAddress, password);
     if (user != null) {
@@ -48,6 +51,7 @@ export class Provider extends Component {
     return user;
   }
 
+  // Sign out user from REST API database
   signOut = () => {
     this.setState(() => { 
       return {

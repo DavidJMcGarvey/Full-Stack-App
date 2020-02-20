@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+// Error page not found
 export default class NotFound extends Component {
   render() {
     return (

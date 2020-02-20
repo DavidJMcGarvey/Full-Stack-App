@@ -21,6 +21,7 @@ import UnhandledError from './components/UnhandledError';
 import withContext from './Context';
 import PrivateRoute from './PrivateRoute';
 
+// Invoke withContext function to create compoenents with context
 const HeaderWithContext = withContext(Header);
 const CoursesWithContext = withContext(Courses);
 const CreateCourseWithContext = withContext(CreateCourse);
@@ -31,13 +32,12 @@ const UserSignUpwithContext = withContext(UserSignUp);
 const UserSignOutWithContext = withContext(UserSignOut);
 
 export default class App extends Component {
-
   render() {
     return (
+      // Handle Routes
       <Router>
         <div>
           <HeaderWithContext />
-          
           <Switch>
             <Route exact path="/" component={CoursesWithContext} />
             <PrivateRoute path="/courses/create" component={CreateCourseWithContext} />

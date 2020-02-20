@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Form component used for course create and update, as well as user sign in and sign up
 export default (props) => {
   const {
     cancel,

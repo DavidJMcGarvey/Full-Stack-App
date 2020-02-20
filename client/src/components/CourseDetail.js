@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import ReactMarkdown  from 'react-markdown';
 
+// Detail page component
 export default class CourseDetail extends Component {
   constructor() {
     super()
@@ -100,6 +101,7 @@ export default class CourseDetail extends Component {
     )
   }
 
+  // Function that deletes course, invokes method from context
   courseDelete = () => {
     const { context } = this.props;
     const id = this.props.match.params.id;

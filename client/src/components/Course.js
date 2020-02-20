@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+// Individual course module component 
 export default class Course extends Component {
   render() {
     const title = this.props.title;

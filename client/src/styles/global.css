@@ -202,12 +202,12 @@ svg {
 /* line 5, ../sass/global.sass */
 body {
   font-family: "Work Sans", sans-serif;
-  background: #fff;
+  background: #edf2f4; /* DAVEY: #edf2f4 / Original: #fff */
 }
 
 /* line 13, ../sass/global.sass */
 .header {
-  background: #57496e;
+  background: #264653; /* DAVEY: #264653 / Original: #57496e */
   padding: 20px 0;
   margin-bottom: 30px;
 }
@@ -282,7 +282,7 @@ h1 {
 
 /* line 61, ../sass/global.sass */
 a {
-  color: #7c689b;
+  color: #1a936f; /* DAVEY: #1a936f / Original: #7c689b */
   cursor: pointer;
   text-decoration: none;
   -webkit-transition: color 0.2s;
@@ -339,7 +339,7 @@ p {
 
 /* line 102, ../sass/global.sass */
 .course--module {
-  background: #7c689b;
+  background: #1a936f; /* DAVEY: #1a936f / Original: #7c689b */
   border-radius: 8px;
   padding: 30px;
   margin-bottom: 30px;
@@ -386,7 +386,7 @@ p {
 }
 /* line 133, ../sass/global.sass */
 .course--add--module {
-  background: #eee;
+  background: #f3ffbd; /* DAVEY: #f3ffbd / Original: #eee */
   text-align: center;
 }
 /* line 137, ../sass/global.sass */
@@ -415,7 +415,7 @@ p {
   width: 13px;
   height: auto;
   margin: 0 5px 0 0;
-  fill: #999;
+  fill: #1c2541; /* DAVEY: #1c2541 / Original: #999 */
 }
 /* line 159, ../sass/global.sass */
 .course--detail {
@@ -678,7 +678,7 @@ input:focus {
 
 /* line 507, ../sass/global.sass */
 .button {
-  background: #7c689b;
+  background: #1a936f; /* DAVEY: #1a936 / Original: #7c689b */
   color: #fff;
   font-family: "Work Sans", sans-serif;
   font-size: 18px;
@@ -701,14 +701,14 @@ input:focus {
 }
 /* line 522, ../sass/global.sass */
 .button:not(.button-secondary):hover {
-  background: #63537d;
+  background: #70c1b3; /* DAVEY: #70c1b3 / Original: #63537d */
 }
 
 /* line 525, ../sass/global.sass */
 .button-secondary {
-  color: #7c689b;
+  color: #1a936f;  /* DAVEY: #1a936f / Original: #7c689b */
   background: none;
-  box-shadow: 0 0 0 2px #7c689b inset;
+  box-shadow: 0 0 0 2px #1a936f inset; /* DAVEY: #1a936f / Original: #7c689b */
   -webkit-transition: box-shadow 0.2s, color 0.2s;
   -moz-transition: box-shadow 0.2s, color 0.2s;
   -ms-transition: box-shadow 0.2s, color 0.2s;
@@ -717,8 +717,8 @@ input:focus {
 }
 /* line 530, ../sass/global.sass */
 .button-secondary:hover {
-  color: #63537d;
-  box-shadow: 0 0 0 2px #63537d inset;
+  color: #70c1b3; /* DAVEY: #70c1b3 / Original: #63537d */
+  box-shadow: 0 0 0 2px #70c1b3 inset; /* DAVEY: #70c1b3 / Original: #63537d */
 }
 
 /* adds additional padding to the bottom of an element */

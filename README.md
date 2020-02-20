@@ -6,7 +6,7 @@ Welcome to my Full Stack App!
 
 ## Application Description and Goals:
 
-${info on project}
+This full stack app takes a REST API and couples it with React client to create a school database. This web app could be used to administer school database infomation. Users are able signup using an email address, and signed in users can create, update, and delete courses. User authentication is used to ensure only the correct users have access to these functions. Enjoy!
 
 To get up and running with this project, run the following commands from the root of the folder that contains this README file.
 
@@ -34,16 +34,19 @@ npm start
 1. JavaScript
 2. React
 3. REST API
-3. Sequelize
-4. SQLite
-5. Password Hashing
-6. React Router
+4. Axios
+5. Sequelize
+6. SQLite
+7. Password Hashing
+8. React Router
 
 ## Screenshots:
-![img]()
-![img]()
-![img]()
+![img](https://user-images.githubusercontent.com/42125523/74898715-88bf9480-534f-11ea-8174-240f8e3995d5.png)
+![img](https://user-images.githubusercontent.com/42125523/74898718-89f0c180-534f-11ea-8c09-3543c66bf431.png)
+![img](https://user-images.githubusercontent.com/42125523/74898722-8c531b80-534f-11ea-8067-c5e4319939fd.png)
+![img](https://user-images.githubusercontent.com/42125523/74898723-8c531b80-534f-11ea-8be0-b2f6b36477b6.png)
+
 
 Author: David J McGarvey  
-Created: 2019-01-29
-Updated: 2020-01-29  
+Created: 2019-01-29  
+Updated: 2020-02-19

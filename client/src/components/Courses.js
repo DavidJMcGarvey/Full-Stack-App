@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import Course from './Course';
 
+// Home page component that lists course modules
 export default class Courses extends Component {
   constructor() {
     super()

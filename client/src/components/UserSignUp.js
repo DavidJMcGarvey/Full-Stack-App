@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Form from './Form';
 
+// Component for user sign up
 export default class UserSignUp extends Component {
   state = {
     firstName: '',

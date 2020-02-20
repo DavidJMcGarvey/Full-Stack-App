@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// Header component
+// Header component, buttons conditional on sign in
 export default class Header extends React.PureComponent {
   render() {
 
