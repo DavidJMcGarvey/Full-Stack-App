@@ -31,7 +31,23 @@
     {
       "userId": 2,
       "title": "Learn How to Test Programs",
-      "description": "In this course, you'll learn how to test programs."
+      "description": "In this course, you'll learn how to test programs.",
+      "estimatedTime": "4 hours",
+      "materialsNeeded": "* Notebook computer running Mac OS X or Windows\n* Text editor"
+    },
+    {
+      "userId": 2,
+      "title": "Learn Python Basics",
+      "description": "In this course, you'll learn the basics of Python, a gernal purpose programing language.",
+      "estimatedTime": "5 hours",
+      "materialsNeeded": "* Notebook computer running Mac OS X or Windows\n* Text editor"
+    },
+    {
+      "userId": 2,
+      "title": "Learn JavaScript Basics",
+      "description": "In this course, you'll learn the basics of JavaScript, the language of the web!.",
+      "estimatedTime": "7 hours",
+      "materialsNeeded": "* Notebook computer running Mac OS X or Windows\n* Text editor"
     }
   ]
 }

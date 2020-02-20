@@ -8,8 +8,9 @@ Welcome to my Full Stack App!
 
 This full stack app takes a REST API and couples it with React client to create a school database. This web app could be used to administer school database infomation. Users are able signup using an email address, and signed in users can create, update, and delete courses. User authentication is used to ensure only the correct users have access to these functions. Enjoy!
 
-To get up and running with this project, run the following commands from the root of the folder that contains this README file.
+To get up and running with this project, you will need to run two sets of commands from both the `/client` and `/api` directories respectively. Both need to be running simultaneously, on different ports, for the program to run. Simply open two different termainal/console windows and have them both running at the same time.
 
+### `/api` instructions
 First, install the project's dependencies using `npm`.
 
 ```
@@ -24,6 +25,20 @@ npm run seed
 ```
 
 And lastly, start the application.
+
+```
+npm start
+```
+
+### `/client` instructions
+First, install the project's dependencies using `npm`.
+
+```
+npm install
+
+```
+
+Then, start the application.
 
 ```
 npm start
@@ -49,4 +64,4 @@ npm start
 
 Author: David J McGarvey  
 Created: 2019-01-29  
-Updated: 2020-02-19
+Updated: 2020-02-20
