@@ -67,7 +67,7 @@ export default class CreateCourse extends Component {
                           value={estimatedTime} 
                           onChange={this.change}
                           className="course--time--input" 
-                          placeholder="Estimated Time" /></div>
+                          placeholder="Estimated Time..." /></div>
                       </li>
                       <li className="course--stats--list--item">
                         <h4>Materials Needed</h4>
@@ -76,8 +76,9 @@ export default class CreateCourse extends Component {
                           name="materialsNeeded"
                           type="text"
                           value={materialsNeeded} 
-                          onChange={this.change} 
-                          placeholder="Materials Needed" /></div>
+                          onChange={this.change}
+                          className="course"
+                          placeholder="Materials Needed..." /></div>
                       </li>
                     </ul>
                   </div>

@@ -41,8 +41,8 @@ export default class CourseDetail extends Component {
     const authUser = context.authenticatedUser;
     
     // Slack friend! This is where I'm attempting to add <li> markup to each material needed (line 90 for rendering)
-    const materials = this.state.materials.map(material => "+ " + material);
-    console.log(materials);
+    // const materials = this.state.materials.map(material => "+ " + material);
+    // console.log(materials);
 
     return (
       <div>
@@ -87,7 +87,7 @@ export default class CourseDetail extends Component {
                   <h4>Materials Needed</h4>
                   <ul>
                     <ReactMarkdown
-                      source={materials[0]} // This just provides the first item in list, not sure how to get the whole list ??
+                      source={course.materialsNeeded} // This just provides the first item in list, not sure how to get the whole list ??
                     />
                   </ul>
 

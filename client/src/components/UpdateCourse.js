@@ -102,7 +102,8 @@ export default class UpdateCourse extends Component {
                           name="materialsNeeded"
                           type="text"
                           value={materialsNeeded} 
-                          onChange={this.change} 
+                          onChange={this.change}
+                          className="course"
                           placeholder={materialsNeeded} /></div>
                       </li>
                     </ul>
