@@ -6,7 +6,7 @@ export default class UnhandledError extends Component {
   render() {
     return (
       <div>
-        <div className="bounds">
+        <div className="bounds--error">
           <h1>Error</h1>
           <p>Sorry! We just encountered an unexpected error.</p>
         </div>

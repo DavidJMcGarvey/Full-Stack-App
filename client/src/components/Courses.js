@@ -15,12 +15,13 @@ export default class Courses extends Component {
 
   componentDidMount() {
     axios.get('http://localhost:5000/api/courses')
-      .then(res => {
+      .then(response => {
         this.setState({
-          courses: res.data.courses
+          courses: response.data.courses
         });
       })
       .catch(err => {
+        this.props.history.push('/error')
         console.log('Error fetching data from REST API', err)
       })
   }
