@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon ./app.js",
-    "seed": "cross-env DB_ENABLE_LOGGING=true node './seed'"
+    "seed": "cross-env DB_ENABLE_LOGGING=true node './seed'",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +23,7 @@
     "cross-env": "^5.2.0",
     "express": "^4.16.3",
     "express-validator": "^6.3.1",
+    "heroku": "^7.38.2",
     "morgan": "^1.9.0",
     "mysql2": "^2.1.0",
     "nodemon": "^1.19.4",
