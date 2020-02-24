@@ -44,6 +44,10 @@ Then, start the application.
 npm start
 ```
 
+
+### `/deploy` directory
+Notice also, the directory `/deploy`. This is simply a copy of the code in `/api` and `/client`, but rearanged in a single directory to faciliate deployment. You can visit the version of this program that is already on the web by clicking [Here](https://davey-full-stack-app.netlify.com/).
+
 ## Technologies:
 
 1. JavaScript
@@ -64,4 +68,4 @@ npm start
 
 Author: David J McGarvey  
 Created: 2019-01-29  
-Updated: 2020-02-20
+Updated: 2020-02-24
