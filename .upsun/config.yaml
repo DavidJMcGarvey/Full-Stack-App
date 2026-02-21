@@ -1,0 +1,53 @@
+# Upsun configuration, generated using AI at: 2026-02-21T14:17:01-08:00
+# AI can make mistakes. Please modify this file to suit your needs.
+applications:
+  api:
+    source:
+      root: api
+    type: nodejs:24
+    build:
+      flavor: none
+    hooks:
+      build: |
+        set -ex
+        npm install --omit=dev
+    web:
+      commands:
+        start: npm start
+      locations:
+        /:
+          passthru: true
+    relationships:
+      database: {}
+
+  client:
+    source:
+      root: client
+    type: nodejs:24
+    build:
+      flavor: none
+    hooks:
+      build: |
+        set -ex
+        npm install --omit=dev
+        npm run build
+    web:
+      commands:
+        start: npm start
+      locations:
+        /:
+          root: public
+          passthru: true
+          index: [index.html]
+
+services:
+  database:
+    type: network-storage:1.0
+
+routes:
+  https://{default}/:
+    type: upstream
+    upstream: client:http
+  https://api.{default}/:
+    type: upstream
+    upstream: api:http
